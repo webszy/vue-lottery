@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <i>back</i>
+      <button class="back"></button>
       <p>活动规则</p>
     </header>
     <div class="content">
@@ -16,7 +16,7 @@
         pointer-bg="https://venler.github.io/demo/vue-lottery/static/pointer.png"
         :lottery-width="['85%', '35%']"
       />
-      <button @click="lotteryClick">看视频可免费抽奖</button>
+      <button @click="lotteryClick"> <i></i> 看视频可免费抽奖</button>
       <p>已有38959人参与</p>
     </div>
   </div>
@@ -47,6 +47,9 @@ export default {
       ],
     };
   },
+  mounted(){
+    
+  },
   methods: {
     lotteryClick() {
       this.lotteryStart = 1;
@@ -58,6 +61,11 @@ export default {
       let index = res.prizeNo - 1;
       console.log(this.prizeList[index]);
     },
+    showMsg(text){
+      this.$toast(text,{
+        duration:4000
+      })
+    }
   },
 };
 </script>
@@ -67,11 +75,11 @@ export default {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding-top: 33px;
+  padding-top: 28px;
   background: #07073d;
 }
 header {
-  height: 17px;
+  height: 32px;
   box-sizing: border-box;
   padding-left: 23px;
   padding-right: 19px;
@@ -80,7 +88,7 @@ header {
   align-items: center;
   font-size: 12px;
   color: #fff;
-  margin-bottom: 151px;
+  margin-bottom: 144px;
 }
 .lottery_wraper {
   width: 74.17%;
@@ -93,12 +101,33 @@ header {
   justify-content: center;
   align-items: center;
 }
+.back{
+  width: 32px;
+  height: 32px;
+  background: url('./assets/images/back_ic@2x.png') no-repeat center;
+  background-size: 16px 16px;
+  border-radius: 0;
+  margin: 0;
+}
 button {
   width: 200px;
   height: 40px;
   background: linear-gradient(180deg, #fde69f, #fdcf5b);
   border-radius: 20px;
   margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#BB2C00;
+  font-size: 14px;
+}
+button i{
+  width: 18px;
+  height: 18px;
+  display: block;
+  background: url('./assets/images/play.png') no-repeat left top;
+  background-size: contain;
+  margin-right: 5px;
 }
 button + p {
   color: #fff;
