@@ -9,8 +9,8 @@
         @lotteryClick="lotteryClick"
         @lotteryDone="lotteryDone"
         :lottery-start="lotteryStart"
-        :lottery-prizenum="8"
-        :lottery-prizeno="1"
+        :lottery-prizenum="prizeNum"
+        :lottery-prizeno="prizeNo"
         lottery-bg="https://venler.github.io/demo/vue-lottery/static/turnplate-bg.png"
         content-bg="https://venler.github.io/demo/vue-lottery/static/turntable.png"
         pointer-bg="https://venler.github.io/demo/vue-lottery/static/pointer.png"
@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       lotteryStart: 0,
-      prizeNo: 1,
-      prizeNum: 8,
+      prizeNo: 1,//中奖的下标
+      prizeNum: 8,//奖品总数,由1开始
       prizeList: [
         "200万里通积分",
         "288元万里通积分红包",
@@ -59,7 +59,7 @@ export default {
     lotteryDone(res) {
       this.lotteryStart = 0;
       let index = res.prizeNo - 1;
-      console.log(this.prizeList[index]);
+      alert(this.prizeList[index])
     },
     showMsg(text){
       this.$toast(text,{

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+//移植三方 https://github.com/Venler/vue-lottery
 export default {
     data () {
         return {
