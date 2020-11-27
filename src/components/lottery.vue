@@ -7,7 +7,8 @@
             <img v-if="angle>0" v-bind:style="{ transform: 'rotate3d(0,0,1,'+angle+'deg)'}" id="turntable" :src="contentBg">
             <img v-else id="lottery_turntable" :src="contentBg">
         </div>
-        <div class="lottery_pointer" :style="{width:lotterywidth[1]}" @click="clickLottery">
+        <!-- <div class="lottery_pointer" :style="{width:lotterywidth[1]}" @click="clickLottery"> -->
+        <div class="lottery_pointer" :style="{width:lotterywidth[1]}">
             <img :src="pointerbg">
         </div>
     </div>

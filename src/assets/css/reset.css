@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* @import url('../fonts/sf-florencesans/style.css'); */
+/*******globe***********/
+
+body,
+div,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+table,
+tr,
+td,
+th,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+fieldset,
+figure {
+  margin: 0;
+  padding: 0;
+}
+/* 设计稿宽度360 */
+html {
+  font-size: 27.78vw; 
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  touch-action: manipulation;
+  /* -webkit-touch-callout: none; */
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  /* transform: translateZ(0); */
+  -webkit-overflow-scrolling:touch;
+}
+html body {
+  font-family: "Roboto",  "ArialMT";
+  background-color: #fff;
+  /* user-select: none; */
+  /* overflow-x: hidden; */
+}
+
+img {
+  border: 0;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+ins {
+  text-decoration: none;
+}
+input,
+button {
+  outline: none;
+  padding: 0;
+  border: none;
+  border: 0;
+  border-radius: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}

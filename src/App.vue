@@ -1,59 +1,108 @@
 <template>
   <div id="app">
-    <lottery
-      @lotteryClick="lotteryClick"
-      @lotteryDone="lotteryDone"
-      :lottery-start="lotteryStart"
-      :lottery-prizenum="8"
-      :lottery-prizeno="1"
-      lottery-bg="https://venler.github.io/demo/vue-lottery/static/turnplate-bg.png"
-      content-bg="https://venler.github.io/demo/vue-lottery/static/turntable.png"
-      pointer-bg="https://venler.github.io/demo/vue-lottery/static/pointer.png"
-      :lottery-width="['85%', '35%']"
-    />
+    <header>
+      <i>back</i>
+      <p>活动规则</p>
+    </header>
+    <div class="content">
+      <lottery
+        @lotteryClick="lotteryClick"
+        @lotteryDone="lotteryDone"
+        :lottery-start="lotteryStart"
+        :lottery-prizenum="8"
+        :lottery-prizeno="1"
+        lottery-bg="https://venler.github.io/demo/vue-lottery/static/turnplate-bg.png"
+        content-bg="https://venler.github.io/demo/vue-lottery/static/turntable.png"
+        pointer-bg="https://venler.github.io/demo/vue-lottery/static/pointer.png"
+        :lottery-width="['85%', '35%']"
+      />
+      <button @click="lotteryClick">看视频可免费抽奖</button>
+      <p>已有38959人参与</p>
+    </div>
   </div>
 </template>
 
 <script>
-import Lottery from './components/lottery.vue'
+import Lottery from "./components/lottery.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Lottery
+    Lottery,
   },
-  data(){
-    return{
-         lotteryStart: 0,
-            prizeNo: 1,
-            prizeNum: 8,
-            prizeList: ['200万里通积分', '288元万里通积分红包', '50万里通积分', '10万里通积分', '感谢参与', '88元万里通积分红包', '100万里通积分', '888元万里通积分红包']
-    }
+  data() {
+    return {
+      lotteryStart: 0,
+      prizeNo: 1,
+      prizeNum: 8,
+      prizeList: [
+        "200万里通积分",
+        "288元万里通积分红包",
+        "50万里通积分",
+        "10万里通积分",
+        "感谢参与",
+        "88元万里通积分红包",
+        "100万里通积分",
+        "888元万里通积分红包",
+      ],
+    };
   },
-  methods:{
-     lotteryClick () {
-            this.lotteryStart = 1
-            let randomNum = 1 + parseInt(Math.random() * this.prizeNum)
-            this.prizeNo = randomNum
-        },
-        lotteryDone (res) {
-            this.lotteryStart = 0
-            let index = res.prizeNo - 1
-            console.log(this.prizeList[index])
-        }
-  }
-}
+  methods: {
+    lotteryClick() {
+      this.lotteryStart = 1;
+      let randomNum = 1 + parseInt(Math.random() * this.prizeNum);
+      this.prizeNo = randomNum;
+    },
+    lotteryDone(res) {
+      this.lotteryStart = 0;
+      let index = res.prizeNo - 1;
+      console.log(this.prizeList[index]);
+    },
+  },
+};
 </script>
 
 <style>
 #app {
   width: 100%;
   height: 100%;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  box-sizing: border-box;
+  padding-top: 33px;
+  background: #07073d;
+}
+header {
+  height: 17px;
+  box-sizing: border-box;
+  padding-left: 23px;
+  padding-right: 19px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #fff;
+  margin-bottom: 151px;
+}
+.lottery_wraper {
+  width: 74.17%;
+}
+.content{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(180deg, #fde69f, #fdcf5b);
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
+button + p {
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
 }
 </style>
