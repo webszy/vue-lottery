@@ -3,6 +3,7 @@ import App from './App.vue'
 import './assets/css/reset.css'
 import 'vue2-toast/lib/toast.css'
 import Toast from 'vue2-toast'
+import VModal from 'vue-js-modal'
 
 Vue.config.productionTip = false
 
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 Vue.use(Toast)
-
+Vue.use(VModal, { dialog: true });
 new Vue({
   render: h => h(App),
 }).$mount('#app')

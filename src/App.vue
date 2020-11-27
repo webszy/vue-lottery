@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <button class="back"></button>
-      <p>活动规则</p>
+      <p @click="showModal">活动规则</p>
     </header>
     <div class="content">
       <lottery
@@ -16,9 +16,30 @@
         pointer-bg="https://venler.github.io/demo/vue-lottery/static/pointer.png"
         :lottery-width="['85%', '35%']"
       />
-      <button @click="lotteryClick"> <i></i> 看视频可免费抽奖</button>
+      <button @click="lotteryClick"><i></i> 看视频可免费抽奖</button>
       <p>已有38959人参与</p>
     </div>
+    <modal
+      name="ruleText"
+      :width="'80%'"
+      class="modalStyle"
+    >
+      <div class="modalContent">
+        <div class="words">
+          12312313
+        </div>
+        <div class="vue-dialog-buttons">
+          <button
+            type="button"
+            class="vue-dialog-button"
+            style="flex: 1 1 100%"
+            @click="$modal.hide('ruleText')"
+          >
+            关闭
+          </button>
+        </div>
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -33,8 +54,8 @@ export default {
   data() {
     return {
       lotteryStart: 0,
-      prizeNo: 1,//中奖的下标
-      prizeNum: 8,//奖品总数,由1开始
+      prizeNo: 1, //中奖的下标
+      prizeNum: 8, //奖品总数,由1开始
       prizeList: [
         "200万里通积分",
         "288元万里通积分红包",
@@ -45,11 +66,21 @@ export default {
         "100万里通积分",
         "888元万里通积分红包",
       ],
+      modelOption: {
+        title: "活动规则",
+        text: "Lorem ipsum dolor sit amet, ...",
+        buttons: [
+          {
+            title: "好的",
+            handler: () => {
+              this.$modal.hide("dialog");
+            },
+          },
+        ],
+      },
     };
   },
-  mounted(){
-    
-  },
+  mounted() {},
   methods: {
     lotteryClick() {
       this.lotteryStart = 1;
@@ -59,13 +90,16 @@ export default {
     lotteryDone(res) {
       this.lotteryStart = 0;
       let index = res.prizeNo - 1;
-      alert(this.prizeList[index])
+      alert(this.prizeList[index]);
     },
-    showMsg(text){
-      this.$toast(text,{
-        duration:4000
-      })
-    }
+    showMsg(text) {
+      this.$toast(text, {
+        duration: 4000,
+      });
+    },
+    showModal() {
+      this.$modal.show("ruleText");
+    },
   },
 };
 </script>
@@ -93,7 +127,7 @@ header {
 .lottery_wraper {
   width: 74.17%;
 }
-.content{
+.content {
   width: 100%;
   height: auto;
   display: flex;
@@ -101,10 +135,10 @@ header {
   justify-content: center;
   align-items: center;
 }
-.back{
+.back {
   width: 32px;
   height: 32px;
-  background: url('./assets/images/back_ic@2x.png') no-repeat center;
+  background: url("./assets/images/back_ic@2x.png") no-repeat center;
   background-size: 16px 16px;
   border-radius: 0;
   margin: 0;
@@ -118,14 +152,14 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:#BB2C00;
+  color: #bb2c00;
   font-size: 14px;
 }
-button i{
+button i {
   width: 18px;
   height: 18px;
   display: block;
-  background: url('./assets/images/play.png') no-repeat left top;
+  background: url("./assets/images/play.png") no-repeat left top;
   background-size: contain;
   margin-right: 5px;
 }
@@ -133,5 +167,37 @@ button + p {
   color: #fff;
   font-size: 14px;
   line-height: 20px;
+}
+header p {
+  height: 30px;
+  line-height: 30px;
+}
+.modalStyle {
+  font-size: 12px;
+}
+.modalExit {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+/* body .vue-dialog-buttons {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+} */
+.modalContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.words {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 </style>
